@@ -1,5 +1,12 @@
 import lib.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import lib.ObjectSerializer.*;
+
 import java.rmi.RemoteException;
 
 /**
@@ -14,6 +21,14 @@ public class Node implements MessageHandling {
     BlockChainBase blockChainManager;
     private final Object lock = new Object();
 
+    // custom variables
+    private List<Block> blockChain;
+    private final int DIFFICULTY = 20;
+
+
+
+
+
     /**
      * Node constructor
      * @param port the server port
@@ -26,6 +41,13 @@ public class Node implements MessageHandling {
         wallet = 0;
         this.num_peers = num_peers;
         //TODO: instantiate your blockchain implementation and set the difficulty to 20.
+        blockChain = new ArrayList<Block>();
+        // create the genius block, no previous block hash
+        Block geniusBlock = new Block();
+
+        //System.out.println("initial node: " + id + "num peers" + num_peers); -> id from 0-2, number: 3
+
+
     }
 
     /**
@@ -112,6 +134,28 @@ public class Node implements MessageHandling {
     public int getPeerNumber(){
         return num_peers;
     }
+
+
+    /**
+     * Download the block chain from other nodes
+     */
+    public void downloadBlockchain() {
+        int maxLength = Integer.MIN_VALUE;
+        List<Block> curBlock = new ArrayList<Block>();
+        // loop all the peers
+        for (int i = 0; i < num_peers; i++) {
+
+        }
+    }
+
+    /**
+     * Get the block chain data and serialize to byte array
+     * @return byte[] the serialized block chain data
+     */
+    public byte[] getBlockchainData() {
+
+    }
+
 
     /************************ Test usage *****************************/
 
