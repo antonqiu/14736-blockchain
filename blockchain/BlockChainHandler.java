@@ -87,7 +87,7 @@ public class BlockChainHandler implements BlockChainBase {
     }
 
     public byte[] createNewBlock(String data) {
-        String curPrevious = getLastBlock().getPreviousHash();
+        String curPrevious = getLastBlock().getHash();
         long nonce = 0;
         String newHash;
         while (true) {
