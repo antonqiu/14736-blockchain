@@ -1,9 +1,12 @@
 package lib;
 
+import java.io.Serializable;
+
 /**
  * Block Class, the element to compose a Blockchain.
  */
-public class Block {
+public class Block implements Serializable {
+    private static final long serialVersionUID = 0L;
 
     private String hash;
 
@@ -65,7 +68,7 @@ public class Block {
 
 
     public static Block fromString(String s){
-        return null;
+        return (Block) ObjectSerializer.deserialize(s.getBytes());
     }
 
 }

@@ -7,7 +7,7 @@ import lib.Block;
 public interface BlockChainBase {
 
     /**
-     * Add a new block into the blockchain.
+     * Add a new block into the block chain.
      * @param block the block to be added.
      * @return whether the block is accepted or not.
      */
