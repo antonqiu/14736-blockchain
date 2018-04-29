@@ -58,7 +58,6 @@ public class BlockChainHandler implements BlockChainBase {
                 // bypass the type checking. better to use instanceof
                 @SuppressWarnings("unchecked")
                 List<Block> resBlockChain = (ArrayList<Block>) ObjectSerializer.deserialize(resBlockChainBytes);
-
                 // choose the longest chain
                 if (resBlockChain.size() > maxLength) {
                     maxLength = resBlockChain.size();
@@ -76,6 +75,7 @@ public class BlockChainHandler implements BlockChainBase {
                 e.printStackTrace();
             }
         }
+        this.blockChain = curBlock;
     }
 
     /**
